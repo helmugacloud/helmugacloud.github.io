@@ -3,12 +3,12 @@
 "description": "tiles",
 "version": "2",
 "minzoom": "0",
-"maxzoom": "10",
-"center": "1.834818,41.639944,10",
+"maxzoom": "15",
+"center": "1.829224,41.734429,15",
 "bounds": "-13.503823,28.988119,1.834818,41.740466",
 "type": "overlay",
 "format": "pbf",
 "generator": "tippecanoe v1.36.0",
-"generator_options": "tippecanoe -z10 --no-tile-compression '--output-to-directory=tiles' BAGES.json --force",
-"json": "{\"vector_layers\": [ { \"id\": \"BAGES\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 10, \"fields\": {\"FULLNAME\": \"String\", \"id\": \"Number\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"BAGES\",\"count\": 5,\"geometry\": \"LineString\",\"attributeCount\": 2,\"attributes\": [{\"attribute\": \"FULLNAME\",\"count\": 1,\"type\": \"string\",\"values\": [\"N Vasco Rd\"]},{\"attribute\": \"id\",\"count\": 5,\"type\": \"number\",\"values\": [0,1,2,3,4],\"min\": 0,\"max\": 4}]}]}}"
+"generator_options": "tippecanoe -z15 --no-tile-compression '--output-to-directory=tiles' BAGES.json --force",
+"json": "{\"vector_layers\": [ { \"id\": \"BAGES\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 15, \"fields\": {\"FULLNAME\": \"String\", \"id\": \"Number\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"BAGES\",\"count\": 5,\"geometry\": \"LineString\",\"attributeCount\": 2,\"attributes\": [{\"attribute\": \"FULLNAME\",\"count\": 1,\"type\": \"string\",\"values\": [\"N Vasco Rd\"]},{\"attribute\": \"id\",\"count\": 5,\"type\": \"number\",\"values\": [0,1,2,3,4],\"min\": 0,\"max\": 4}]}]}}"
 }
