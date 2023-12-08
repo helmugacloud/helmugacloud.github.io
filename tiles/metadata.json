@@ -10,5 +10,5 @@
 "format": "pbf",
 "generator": "tippecanoe v1.36.0",
 "generator_options": "tippecanoe -z15 --no-tile-compression '--output-to-directory=tiles' BAGES.json --force",
-"json": "{\"vector_layers\": [ { \"id\": \"BAGES\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 15, \"fields\": {\"FULLNAME\": \"String\", \"id\": \"Number\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"BAGES\",\"count\": 5,\"geometry\": \"LineString\",\"attributeCount\": 2,\"attributes\": [{\"attribute\": \"FULLNAME\",\"count\": 1,\"type\": \"string\",\"values\": [\"N Vasco Rd\"]},{\"attribute\": \"id\",\"count\": 5,\"type\": \"number\",\"values\": [0,1,2,3,4],\"min\": 0,\"max\": 4}]}]}}"
+"json": "{\"vector_layers\": [ { \"id\": \"BAGES\", \"description\": \"\", \"minzoom\": 0, \"maxzoom\": 15, \"fields\": {\"FULLNAME\": \"String\", \"id\": \"Number\", \"team\": \"String\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"BAGES\",\"count\": 5,\"geometry\": \"LineString\",\"attributeCount\": 3,\"attributes\": [{\"attribute\": \"FULLNAME\",\"count\": 1,\"type\": \"string\",\"values\": [\"N Vasco Rd\"]},{\"attribute\": \"id\",\"count\": 5,\"type\": \"number\",\"values\": [0,1,2,3,4],\"min\": 0,\"max\": 4},{\"attribute\": \"team\",\"count\": 1,\"type\": \"string\",\"values\": [\"BAGES\"]}]}]}}"
 }
