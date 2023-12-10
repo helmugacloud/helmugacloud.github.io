@@ -159,9 +159,9 @@
             minZoom: minZoom,
             vectorTileLayerStyles: {
     // A plain set of L.Path options.
-    BAGES: {
+    BAGES2: {
         weight: 2,
-        fillColor: '#ff0',
+        fillColor: 'red',
         fillOpacity: 1,
         color: "red"
     },
