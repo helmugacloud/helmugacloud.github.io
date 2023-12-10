@@ -36,6 +36,10 @@ file_put_contents($dir.'VALLESOCCIDENTAL.js', "var VALLESOCCIDENTAL = ".json_enc
 $contenido = file_get_contents($dir."BAGES_20230411.json");
 $json_obj = json_decode($contenido);
 
+$json_obj->name = "BAGES";
+
+echo $json_obj->type;
+
 for($i=0; $i<sizeof($json_obj->features); $i++) {
   $json_obj->features[$i]->properties->FULLNAME = "N Vasco Rd";
   $json_obj->features[$i]->properties->id = $i;
