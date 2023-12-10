@@ -33,7 +33,7 @@ $json_obj->features = $array_merge;
 file_put_contents($dir.'VALLESOCCIDENTAL.js', "var VALLESOCCIDENTAL = ".json_encode($json_obj));*/
 
 
-$contenido = file_get_contents($dir."BAGES_20230411.json");
+$contenido = file_get_contents($dir."BAGES_20230401.json");
 $json_obj = json_decode($contenido);
 
 $json_obj->name = "BAGES";
@@ -55,6 +55,6 @@ for($i=0; $i<sizeof($json_obj->features); $i++) {
 
 echo json_encode($json_obj);
 
-file_put_contents($dir.'BAGES.json', json_encode($json_obj));
+file_put_contents($dir.'BAGES2.json', json_encode($json_obj));
 
 ?>

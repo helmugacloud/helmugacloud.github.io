@@ -160,10 +160,10 @@
             vectorTileLayerStyles: {
     // A plain set of L.Path options.
     BAGES: {
-        weight: 8,
+        weight: 2,
         fillColor: '#ff0',
         fillOpacity: 1,
-        fill: true
+        color: "red"
     },
 },
         };
