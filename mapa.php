@@ -87,6 +87,8 @@
         // get vector tiles URL
         //var mapUrl = "https://urbangrammarai.xyz/great-britain/tiles/{z}/{x}/{y}.pbf";
         var mapUrl = "https://helmugacloud.github.io/tiles/{z}/{x}/{y}.pbf";
+        //var mapUrl = "https://tracker.helmuga.cloud/replay-map/1272/tiles/{z}/{x}/{y}.pbf";
+
 
         // mapping fof colors to signature types
         const cmap = {
