@@ -1,4 +1,79 @@
 
+<?php
+
+  $idcarrera = 1272;
+  include '../../php/functions.php';
+
+  function colorTeam($team) {
+
+    global $idcarrera;
+
+    $query = "SELECT color
+                  FROM tracker.cct_virtual_races_teams
+                  WHERE team = '".$team."'
+                  AND idcarrera = $idcarrera;";
+                  
+    $result = mysql_query( $query );
+    $row = mysql_fetch_assoc( $result );
+
+    return $row['color'];
+
+  }
+
+  function obtenerNombreEquipo($fichero) {
+
+    $campos = explode(".", $fichero);
+    $nombre = $campos[0];
+
+    $campos = explode("_", $nombre);
+
+    if(sizeof($campos) > 1)
+      return $campos[0];
+    else
+      return $nombre;
+
+  }
+
+  function loadJson() {
+
+    global $idcarrera;
+
+    $html = "";
+
+    if ($handle = opendir("/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/replay-map/".$idcarrera."/")) {
+      while (false !== ($entry = readdir($handle))) {    
+          if ($entry != "." && $entry != ".." && $entry != "") {
+
+            $equipo = obtenerNombreEquipo($entry);
+            $color = colorTeam($equipo);
+
+            if($equipo != "") {
+                $html .= pathinfo($entry)['filename'].": {
+                        weight: 2,
+                        fillOpacity: 1,
+                        color: '".$color."',
+                        fillColor: '".$color."',
+                    },";
+            }
+            
+            
+              
+          }        
+      }    
+
+
+      closedir($handle);
+    }
+
+
+    return $html;
+
+  }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -50,6 +125,8 @@
 
 <body style='margin:0'>
 
+
+
     <!-- div containing map -->
     <div id="map" style="width: 100vw; height: 100vh; background: #fdfdfd"></div>
 
@@ -86,19 +163,18 @@
 
         // get vector tiles URL
         //var mapUrl = "https://urbangrammarai.xyz/great-britain/tiles/{z}/{x}/{y}.pbf";
-        var mapUrl = "https://helmugacloud.github.io/tiles/{z}/{x}/{y}.pbf";
-        //var mapUrl = "https://tracker.helmuga.cloud/replay-map/1272/tiles/{z}/{x}/{y}.pbf";
+        //var mapUrl = "https://helmugacloud.github.io/tiles/{z}/{x}/{y}.pbf";
+        var mapUrl = "https://tracker.helmuga.cloud/replay-map/1272/tiles/{z}/{x}/{y}.pbf";
 
 
 
         // define styling of vector tiles
         var vectorTileStyling = {
-          BAGES2_20230331: {
-              weight: 2,
-              fillColor: 'red',
-              fillOpacity: 1,
-              color: "red"
-          }
+          <?php
+
+            echo loadJson();
+
+          ?>
         }
 
         // define options of vector tiles
