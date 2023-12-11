@@ -90,66 +90,15 @@
         //var mapUrl = "https://tracker.helmuga.cloud/replay-map/1272/tiles/{z}/{x}/{y}.pbf";
 
 
-        // mapping fof colors to signature types
-        const cmap = {
-            "0_0": "#f2e6c7",
-            "1_0": "#8fa37e",
-            "3_0": "#d7a59f",
-            "4_0": "#d7ded1",
-            "5_0": "#c3abaf",
-            "6_0": "#e4cbc8",
-            "7_0": "#c2d0d9",
-            "8_0": "#f0d17d",
-            "2_0": "#678ea6",
-            "2_1": "#94666e",
-            "2_2": "#efc758",
-            "9_0": "#3b6e8c",
-            "9_1": "#333432",
-            "9_2": "#ab888e",
-            "9_3": "#c1c1c0",
-            "9_4": "#bc5b4f",
-            "9_5": "#a7b799",
-            "9_6": "#c1c1c0",
-            "9_7": "#c1c1c0",
-            "9_8": "#c1c1c0"
-        };
-
-        // mapping of names to signature types to be shown in popup on click
-        const popup_info = {
-            "0_0": "<strong>Signature type</strong><br>Countryside agriculture",
-            "1_0": "<strong>Signature type</strong><br>Accessible suburbia",
-            "3_0": "<strong>Signature type</strong><br>Open sprawl",
-            "4_0": "<strong>Signature type</strong><br>Wild countryside",
-            "5_0": "<strong>Signature type</strong><br>Warehouse/Park land",
-            "6_0": "<strong>Signature type</strong><br>Gridded residential quarters",
-            "7_0": "<strong>Signature type</strong><br>Urban buffer",
-            "8_0": "<strong>Signature type</strong><br>Disconnected suburbia",
-            "2_0": "<strong>Signature type</strong><br>Dense residential neighbourhoods",
-            "2_1": "<strong>Signature type</strong><br>Connected residential neighbourhoods",
-            "2_2": "<strong>Signature type</strong><br>Dense urban neighbourhoods",
-            "9_0": "<strong>Signature type</strong><br>Local urbanity",
-            "9_1": "<strong>Signature type</strong><br>Concentrated urbanity",
-            "9_2": "<strong>Signature type</strong><br>Regional urbanity",
-            "9_4": "<strong>Signature type</strong><br>Metropolitan urbanity",
-            "9_5": "<strong>Signature type</strong><br>Hyper concentrated urbanity",
-        };
 
         // define styling of vector tiles
         var vectorTileStyling = {
-            signatures_combined_levels_clipped_4326: function (properties, zoom) {
-                var weight = 0;
-                if (zoom > 12) {
-                    weight = 1.0;
-                }
-                return ({
-                    fill: true,
-                    weight: weight,
-                    color: "#ffffff",
-                    fillColor: "#ff0000",
-                    fillOpacity: 0.9,
-                    opacity: 1.0,
-                });
-            }
+          BAGES2_20230331: {
+              weight: 2,
+              fillColor: 'red',
+              fillOpacity: 1,
+              color: "red"
+          }
         }
 
         // define options of vector tiles
@@ -159,15 +108,7 @@
             attribution: '&copy; <a href="https://martinfleischmann.net">Martin Fleischmann</a>, <a href="https://darribas.org">Dani Arribas-Bel</a>, <a href="https://urbangrammarai.xyz">Urban Grammar AI research project</a>',
             maxNativeZoom: maxZoom,
             minZoom: minZoom,
-            vectorTileLayerStyles: {
-    // A plain set of L.Path options.
-    BAGES2: {
-        weight: 2,
-        fillColor: 'red',
-        fillOpacity: 1,
-        color: "red"
-    },
-},
+            vectorTileLayerStyles: vectorTileStyling,
         };
 
         // create VectorGrid layer and add popup to it
