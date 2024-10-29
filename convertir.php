@@ -43,11 +43,10 @@ if ($handle = opendir("/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/re
 
         $json_obj->name = $entry;
 
-        echo $json_obj->type;
-
         for($i=0; $i<sizeof($json_obj->features); $i++) {
+          $json_obj->features[$i]->id = (string)floor(rand(0, 999));
           $json_obj->features[$i]->properties->FULLNAME = "N Vasco Rd";
-          $json_obj->features[$i]->properties->id = $i;
+          $json_obj->features[$i]->properties->id = (string)floor(rand(0, 999));
           $json_obj->features[$i]->properties->name = $entry;
           //$json_obj->features[$i]->tippecanoe->maxzoom = 9;
           //$json_obj->features[$i]->tippecanoe->minzoom = 4;
@@ -58,7 +57,7 @@ if ($handle = opendir("/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/re
           }
         }
 
-        echo json_encode($json_obj);
+        //echo json_encode($json_obj);
 
         file_put_contents($dir.$entry, json_encode($json_obj));
 
