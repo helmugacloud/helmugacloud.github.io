@@ -1,0 +1,14 @@
+{
+"name": "/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/githubpages/helmugacloud.github.io/2251/tiles",
+"description": "/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/githubpages/helmugacloud.github.io/2251/tiles",
+"version": "2",
+"minzoom": "6",
+"maxzoom": "15",
+"center": "-2.987200,43.356000,15",
+"bounds": "-2.987300,43.356000,-2.987200,43.356100",
+"type": "overlay",
+"format": "pbf",
+"generator": "tippecanoe v1.36.0",
+"generator_options": "tippecanoe --force --read-parallel --no-feature-limit --no-tile-size-limit --coalesce --simplify-only-low-zooms '--minimum-zoom=6' '--maximum-zoom=15' --no-tile-compression '--include=color' '--output-to-directory=/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/githubpages/helmugacloud.github.io/2251/tiles' /var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/replay-map/2251/BARCELONA_20241030.json",
+"json": "{\"vector_layers\": [ { \"id\": \"BARCELONA_20241030\", \"description\": \"\", \"minzoom\": 6, \"maxzoom\": 15, \"fields\": {\"color\": \"String\"} } ],\"tilestats\": {\"layerCount\": 1,\"layers\": [{\"layer\": \"BARCELONA_20241030\",\"count\": 1,\"geometry\": \"LineString\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"color\",\"count\": 1,\"type\": \"string\",\"values\": [\"#CC00FF\"]}]}]}}"
+}
