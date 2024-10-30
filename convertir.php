@@ -1,54 +1,61 @@
 <?php
 
+include '/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/php/functions.php';
+
 $dir = "/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/githubpages/helmugacloud.github.io/json/";
 
 $array_merge = [];
 
-/*if ($handle = opendir($dir)) {
-  while (false !== ($entry = readdir($handle))) {    
-      if ($entry != "." && $entry != ".." && substr($entry, 0, 9) === 'VALLESOCC') {
+$idcarrera = 1272;
 
-        $extension = pathinfo($entry, PATHINFO_EXTENSION);
+function colorTeam($team) {
 
+  global $idcarrera;
 
-        if(strtolower($extension) === 'json') {
-          $contenido = file_get_contents($dir.$entry);
-          $array1 = json_decode($contenido, true)['features'];
+  $query = "SELECT color
+                FROM tracker.cct_virtual_races_teams
+                WHERE team = '".$team."'
+                AND idcarrera = $idcarrera;";
+                
+  $result = mysql_query( $query );
+  $row = mysql_fetch_assoc( $result );
 
-          $array_merge = array_merge($array_merge, $array1);
-        }
+  return $row['color'];
 
-      }        
-  }    
-  closedir($handle);
-}*/
+}
 
+function obtenerNombreEquipo($fichero) {
 
-/*
-$json = '{ "type": "FeatureCollection", "features": [] }';
-$json_obj = json_decode($json);
-$json_obj->features = $array_merge;
+  $campos = explode(".", $fichero);
+  $nombre = $campos[0];
 
+  $campos = explode("_", $nombre);
 
-file_put_contents($dir.'VALLESOCCIDENTAL.js', "var VALLESOCCIDENTAL = ".json_encode($json_obj));*/
+  if(sizeof($campos) > 1)
+    return $campos[0];
+  else
+    return $nombre;
 
+}
 
 if ($handle = opendir($dir)) {
   while (false !== ($entry = readdir($handle))) {    
       if ($entry != "." && $entry != ".." && $entry != "") {
-
 
         $contenido = file_get_contents($dir.$entry);
         $json_obj = json_decode($contenido);
 
         $json_obj->name = $entry;
 
+        $equipo = obtenerNombreEquipo($entry);
+        $color = colorTeam($equipo);
+
         for($i=0; $i<sizeof($json_obj->features); $i++) {
           $json_obj->features[$i]->id = (string)floor(rand(0, 999));
           $json_obj->features[$i]->properties->FULLNAME = "N Vasco Rd";
           $json_obj->features[$i]->properties->id = (string)floor(rand(0, 999));
           $json_obj->features[$i]->properties->name = $entry;
-          $json_obj->features[$i]->properties->color = "#FF0000";
+          $json_obj->features[$i]->properties->color = $color;
           //$json_obj->features[$i]->tippecanoe->maxzoom = 9;
           //$json_obj->features[$i]->tippecanoe->minzoom = 4;
 

@@ -22,7 +22,7 @@
 
             $html .= $name_layer.": function (properties, zoom) {
                 var weight = zoom > 12 ? 1.0 : 0.5; // Agrega grosor mínimo para niveles de zoom bajos
-                var color = '#ffff00'; // Asigna color desde la propiedad 'color' o un predeterminado
+                var color = properties.color; // Asigna color desde la propiedad 'color' o un predeterminado
 
                 return {
                     fill: true,
