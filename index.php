@@ -1,3 +1,70 @@
+<?php
+
+  include '/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/php/functions.php';
+
+  if(!isset($_GET["stage"]))
+    $stage = "NA";
+  else
+    $stage = $_GET["stage"];
+
+  $datoscarrera = datosCarreraItem($_GET["race"], $_GET["year"], $stage);
+	$idcarrera = $datoscarrera['idcarrera'];
+
+  function loadJson($idcarrera) {
+
+    $html = "";
+
+    if ($handle = opendir("/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/replay-map/".$idcarrera."/")) {
+      while (false !== ($entry = readdir($handle))) {    
+          if ($entry != "." && $entry != "..") {
+
+            $name_layer = str_replace(".json", "", $entry);
+
+            $html .= $name_layer.": function (properties, zoom) {
+                var weight = zoom > 12 ? 1.0 : 0.5; // Agrega grosor mínimo para niveles de zoom bajos
+                var color = '#ffff00'; // Asigna color desde la propiedad 'color' o un predeterminado
+
+                return {
+                    fill: true,
+                    weight: 1,
+                    color: color,
+                    fillColor: color,
+                    fillOpacity: 0.9,
+                    opacity: 1.0
+                };
+            },";
+
+            /*$equipo = obtenerNombreEquipo($entry);
+            $color = colorTeam($equipo);
+            
+            $html .= "var options_".$equipo." = {
+              maxZoom: 20,
+              tolerance: 3,
+              debug: 0,
+              style: {
+                  color: '".$color."',
+                  weight: 2
+              }
+            };
+    
+            drawCanvasLayer('./".$idcarrera."/".$entry."?v=".rand()."', 'polyline', options_".$equipo.");";*/
+              
+          }        
+      }    
+      closedir($handle);
+    }
+
+
+    return $html;
+
+  }
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,35 +96,10 @@
           'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
         ).addTo(map);
 
-        var mapUrl = "https://helmugacloud.github.io/1272/tiles/{z}/{x}/{y}.pbf";
+        var mapUrl = "https://helmugacloud.github.io/<?php echo $idcarrera; ?>/tiles/{z}/{x}/{y}.pbf";
 
         var vectorTileStyling = {
-            OSONA_20240326: function (properties, zoom) {
-                var weight = zoom > 12 ? 1.0 : 0.5; // Agrega grosor mínimo para niveles de zoom bajos
-                var color = properties.color || "#ffff00"; // Asigna color desde la propiedad 'color' o un predeterminado
-
-                return {
-                    fill: true,
-                    weight: 1,
-                    color: color,
-                    fillColor: color,
-                    fillOpacity: 0.9,
-                    opacity: 1.0
-                };
-            },
-            BARCELONA_20240322: function (properties, zoom) {
-                var weight = zoom > 12 ? 1.0 : 0.5; // Agrega grosor mínimo para niveles de zoom bajos
-                var color = "#ffff00"; // Asigna color desde la propiedad 'color' o un predeterminado
-
-                return {
-                    fill: true,
-                    weight: 1,
-                    color: color,
-                    fillColor: color,
-                    fillOpacity: 0.9,
-                    opacity: 1.0
-                };
-            }
+            <?php echo loadJson($idcarrera); ?>
         }
 
 
