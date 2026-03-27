@@ -5,10 +5,10 @@
 "minzoom": "6",
 "maxzoom": "15",
 "center": "2.202759,41.389173,15",
-"bounds": "2.085565,41.378936,2.219248,41.558324",
+"bounds": "1.926502,41.378936,2.219248,41.558324",
 "type": "overlay",
 "format": "pbf",
 "generator": "tippecanoe v1.36.0",
 "generator_options": "/usr/local/bin/tippecanoe --force --read-parallel --no-feature-limit --no-tile-size-limit --coalesce --simplify-only-low-zooms '--minimum-zoom=6' '--maximum-zoom=15' --no-tile-compression '--include=color' '--output-to-directory=/var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/githubpages/helmugacloud.github.io/2972/tiles' /var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/replay-map/2972/BARCELONA_20260327.json /var/www/vhosts/helmuga.cloud/tracker.cyclingcloud.com/replay-map/2972/VALLESOCCIDENTAL_20260327.json",
-"json": "{\"vector_layers\": [ { \"id\": \"BARCELONA_20260327\", \"description\": \"\", \"minzoom\": 6, \"maxzoom\": 15, \"fields\": {\"color\": \"String\"} }, { \"id\": \"VALLESOCCIDENTAL_20260327\", \"description\": \"\", \"minzoom\": 6, \"maxzoom\": 15, \"fields\": {\"color\": \"String\"} } ],\"tilestats\": {\"layerCount\": 2,\"layers\": [{\"layer\": \"BARCELONA_20260327\",\"count\": 1,\"geometry\": \"LineString\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"color\",\"count\": 1,\"type\": \"string\",\"values\": [\"#CC00FF\"]}]},{\"layer\": \"VALLESOCCIDENTAL_20260327\",\"count\": 1,\"geometry\": \"LineString\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"color\",\"count\": 1,\"type\": \"string\",\"values\": [\"#FF75BA\"]}]}]}}"
+"json": "{\"vector_layers\": [ { \"id\": \"BARCELONA_20260327\", \"description\": \"\", \"minzoom\": 6, \"maxzoom\": 15, \"fields\": {\"color\": \"String\"} }, { \"id\": \"VALLESOCCIDENTAL_20260327\", \"description\": \"\", \"minzoom\": 6, \"maxzoom\": 15, \"fields\": {\"color\": \"String\"} } ],\"tilestats\": {\"layerCount\": 2,\"layers\": [{\"layer\": \"BARCELONA_20260327\",\"count\": 2,\"geometry\": \"LineString\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"color\",\"count\": 1,\"type\": \"string\",\"values\": [\"#CC00FF\"]}]},{\"layer\": \"VALLESOCCIDENTAL_20260327\",\"count\": 1,\"geometry\": \"LineString\",\"attributeCount\": 1,\"attributes\": [{\"attribute\": \"color\",\"count\": 1,\"type\": \"string\",\"values\": [\"#FF75BA\"]}]}]}}"
 }
